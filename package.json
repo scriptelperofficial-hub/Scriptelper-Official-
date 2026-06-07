@@ -1,0 +1,23 @@
+{
+  "name": "scriptelper",
+  "version": "1.0.0",
+  "description": "A beginner-friendly JavaScript library for DOM manipulation.",
+  "main": "scriptelper.js",
+  "keywords": [
+    "javascript",
+    "dom",
+    "library",
+    "frontend",
+    "scriptelper"
+  ],
+  "author": "Abdul Samad",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/s82845070-lang/Scriptelper-.git"
+  },
+  "homepage": "https://github.com/s82845070-lang/Scriptelper-#readme",
+  "bugs": {
+    "url": "https://github.com/s82845070-lang/Scriptelper-/issues"
+  }
+}
