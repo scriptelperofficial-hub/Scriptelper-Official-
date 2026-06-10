@@ -3,6 +3,12 @@
   "version": "1.0.0",
   "description": "A beginner-friendly JavaScript library for DOM manipulation.",
   "main": "scriptelper.js",
+  "unpkg": "scriptelper.js",
+  "files": [
+    "scriptelper.js",
+    "README.md",
+    "LICENSE"
+  ],
   "keywords": [
     "javascript",
     "dom",
