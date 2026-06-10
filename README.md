@@ -1,38 +1,43 @@
-# **Scriptelper**
+![Scriptelper Banner](./assests/banner.png)
 
-**A beginner-friendly JavaScript library for DOM manipulation, Local Storage, and Fetch requests.**
+# Scriptelper
 
-Scriptelper is a lightweight JavaScript library designed to make working with the DOM easier, more readable, and less intimidating for new developers.
+A lightweight, beginner-friendly JavaScript library for DOM manipulation, Local Storage, and Fetch requests.
+
+# Scriptelper
+
+**A lightweight, beginner-friendly JavaScript library for DOM manipulation, Local Storage, and Fetch requests.**
+
+Scriptelper simplifies common JavaScript tasks with a clean, chainable API and beginner-friendly error messages.
 
 ---
 
-# **Why Scriptelper?**
+# Why Scriptelper?
 
-JavaScript's DOM API is powerful, but beginners often find it repetitive and confusing.
-
-Instead of writing:
+Working directly with the DOM can become repetitive:
 
 ```js
 document.querySelector("#title").textContent = "Hello World";
 ```
 
-You can write:
+With Scriptelper:
 
 ```js
-help.text("#title", "Hello World");
+$.find("#title").text("Hello World");
 ```
 
 Scriptelper focuses on:
 
 - Simplicity
 - Readability
-- Beginner-friendly APIs
-- Clear error messages
+- Chainable APIs
+- Helpful error messages
 - Lightweight design
+- Beginner-friendly learning
 
 ---
 
-# **Features**
+# Features
 
 - DOM Selection
 - Text Manipulation
@@ -40,311 +45,387 @@ Scriptelper focuses on:
 - Event Handling
 - CSS Class Helpers
 - Show / Hide Elements
+- Element Creation
+- Attribute Helpers
+- Form Value Helpers
 - Local Storage Helpers
 - Fetch API Helpers
-- Element Creation
-- Beginner-Friendly Error Messages
+- Chainable Methods
 
 ---
 
-# **Installation**
+# Installation
 
-Include the file in your HTML:
+## NPM
+
+```bash
+npm install scriptelper
+```
+
+## CDN
 
 ```html
-<script src="scriptelper.js"></script>
+<script src="https://unpkg.com/scriptelper"></script>
 ```
 
 ---
 
-### Create an instance:
+# Global Instance
 
 ```js
-const help = new Scriptelper();
+window.$ = new Scriptelper();
 ```
 
 ---
 
-# **Methods**
+# DOM Selection
 
-## `find()`
+## find()
 
 Returns the first matching element.
 
 ### Syntax
 
 ```js
-help.find(selector);
+$.find(selector);
 ```
 
-### Example
+### Examples
 
 ```js
-help.find("#title");
-help.find(".card");
-help.find("button");
+$.find("#title");
+$.find(".card");
+$.find("button");
 ```
 
 ---
 
-## `findAll()`
+## findAll()
 
 Returns all matching elements.
 
 ### Syntax
 
 ```js
-help.findAll(selector);
+$.findAll(selector);
 ```
 
 ### Example
 
 ```js
-help.findAll(".card");
-```
+const cards = $.findAll(".card");
 
----
-
-## `text()`
-
-Sets the text content of an element.
-
-### Syntax
-
-```js
-help.text(target, text);
-```
-
-### Example
-
-```js
-help.text("#title", "Welcome");
-```
-
----
-
-## `html()`
-
-Sets HTML content inside an element.
-
-### Syntax
-
-```js
-help.html(target, html);
-```
-
-### Example
-
-```js
-help.html("#box", "<b>Hello World</b>");
-```
-
----
-
-## `on()`
-
-Adds an event listener.
-
-### Syntax
-
-```js
-help.on(target, event, callback);
-```
-
-### Example
-
-```js
-help.on("#btn", "click", () => {
-  console.log("Button clicked");
+cards.forEach(card => {
+    card.addClass("active");
 });
 ```
 
 ---
 
-## `addClass()`
+# Element Methods
+
+All methods below are available on elements returned by `find()`, `findAll()`, and `create()`.
+
+---
+
+## text()
+
+Sets text content.
+
+```js
+$.find("#title").text("Welcome");
+```
+
+---
+
+## html()
+
+Sets HTML content.
+
+```js
+$.find("#box").html("<b>Hello World</b>");
+```
+
+---
+
+## addClass()
 
 Adds a CSS class.
 
 ```js
-help.addClass("#box", "active");
+$.find("#box").addClass("active");
 ```
 
 ---
 
-## `removeClass()`
+## removeClass()
 
 Removes a CSS class.
 
 ```js
-help.removeClass("#box", "active");
+$.find("#box").removeClass("active");
 ```
 
 ---
 
-## `toggleClass()`
+## toggleClass()
 
 Adds a class if it doesn't exist and removes it if it does.
 
 ```js
-help.toggleClass("#box", "active");
+$.find("#box").toggleClass("active");
 ```
 
 ---
 
-## `replaceClass()`
+## replaceClass()
 
 Replaces one class with another.
 
 ```js
-help.replaceClass("#box", "old", "new");
+$.find("#box").replaceClass("inactive", "active");
 ```
 
 ---
 
-## `toggle()`
+## toggle()
 
 Shows or hides an element.
 
 ```js
-help.toggle("#menu");
+$.find("#menu").toggle();
 ```
 
 ---
 
-## `create()`
+## value()
+
+Set a value:
+
+```js
+$.find("#name").value("Samad");
+```
+
+Get a value:
+
+```js
+const name = $.find("#name").value();
+```
+
+---
+
+## attr()
+
+Set an attribute:
+
+```js
+$.find("#box").attr("data-id", "123");
+```
+
+Get an attribute:
+
+```js
+const id = $.find("#box").attr("data-id");
+```
+
+---
+
+## on()
+
+Adds an event listener.
+
+```js
+$.find("#btn").on("click", () => {
+    console.log("Button clicked");
+});
+```
+
+---
+
+## off()
+
+Remove all handlers:
+
+```js
+$.find("#btn").off("click");
+```
+
+Remove a specific handler:
+
+```js
+function handleClick() {
+    console.log("Clicked");
+}
+
+$.find("#btn").off("click", handleClick);
+```
+
+---
+
+## appendTo()
+
+Appends an element to a parent.
+
+```js
+const div = $.create("div");
+
+div.appendTo("#container");
+```
+
+---
+
+## remove()
+
+Removes the selected element from the DOM.
+
+```js
+$.find("#oldBox").remove();
+```
+
+---
+
+# Creating Elements
+
+## create()
 
 Creates a new HTML element.
 
 ```js
-const div = help.create("div");
+const div = $.create("div");
 ```
 
 Create and append directly:
 
 ```js
-help.create("p", "#container");
+$.create("p", "#container");
+```
+
+Example:
+
+```js
+$.create("p")
+    .text("Hello Scriptelper")
+    .appendTo("#container");
 ```
 
 ---
 
-# **Local Storage**
+# Local Storage
 
-## `store()`
+## store()
 
 Stores data in Local Storage.
 
 ```js
-help.store("username", "Samad");
-```
-
----
-
-## `load()`
-
-Retrieves data from Local Storage.
-
-```js
-const username = help.load("username");
-```
-
----
-
-## `remove()`
-
-Removes a stored item.
-
-```js
-help.remove("username");
-```
-
----
-
-## `clear()`
-
-Clears all Local Storage data.
-
-```js
-help.clear();
-```
-
----
-
-# **Fetch Helpers**
-
-## `getData()`
-
-Fetches data from an API.
-
-```js
-const users = await help.getData(
-  "https://jsonplaceholder.typicode.com/users"
-);
-```
-
----
-
-## `postData()`
-
-Sends data using a POST request.
-
-```js
-await help.postData(
-  "https://jsonplaceholder.typicode.com/users",
-  {
-    name: "Samad"
-  }
-);
-```
-
----
-
-# **Supported Targets**
-
-### CSS Selector
-
-```js
-help.text("#title", "Hello");
-```
-
-### DOM Element
-
-```js
-const title = help.find("#title");
-help.text(title, "Hello");
-```
-
----
-
-# **Example Project**
-
-### HTML
-
-```html
-<h1 id="title">Hello</h1>
-
-<button id="btn">Change Text</button>
-```
-
-### JavaScript
-
-```js
-const help = new Scriptelper();
-
-help.on("#btn", "click", () => {
-  help.text("#title", "Welcome to Scriptelper!");
-  help.addClass("#title", "active");
+$.store("user", {
+    name: "Samad",
+    age: 20
 });
 ```
 
 ---
 
-# **Error Handling**
+## load()
 
-Scriptelper uses beginner-friendly error messages:
+Retrieves data from Local Storage.
+
+```js
+const user = $.load("user");
+```
+
+---
+
+## removeItem()
+
+Removes stored data.
+
+```js
+$.removeItem("user");
+```
+
+---
+
+## clear()
+
+Clears all Local Storage data.
+
+```js
+$.clear();
+```
+
+---
+
+# Fetch Helpers
+
+## getData()
+
+Fetches data from an API.
+
+```js
+const users = await $.getData(
+    "https://jsonplaceholder.typicode.com/users"
+);
+```
+
+---
+
+## postData()
+
+Sends data using a POST request.
+
+```js
+await $.postData(
+    "https://jsonplaceholder.typicode.com/users",
+    {
+        name: "Samad"
+    }
+);
+```
+
+---
+
+# Method Chaining
+
+```js
+$.find("#title")
+    .text("Welcome")
+    .addClass("active")
+    .attr("data-loaded", "true");
+```
+
+---
+
+# Example Project
+
+## HTML
+
+```html
+<h1 id="title">Hello</h1>
+
+<button id="btn">
+    Change Text
+</button>
+```
+
+## JavaScript
+
+```js
+$.find("#btn").on("click", () => {
+    $.find("#title")
+        .text("Welcome to Scriptelper!")
+        .addClass("active");
+});
+```
+
+---
+
+# Error Handling
+
+Example messages:
 
 ```txt
-Could not find the target element.
-Check that the selector exists in your HTML.
+Element not found.
+Please check that the selector exists in your HTML.
 ```
 
 ```txt
@@ -353,26 +434,28 @@ Please provide a valid class name.
 
 ```txt
 Please provide a URL.
-Example: help.getData("https://api.example.com")
+Example: $.getData("https://api.example.com")
 ```
 
 ---
 
-# **Roadmap**
+# Roadmap
 
 - css()
-- attr()
+- show()
+- hide()
 - append()
 - prepend()
-- removeElement()
+- before()
+- after()
+- parent()
+- children()
 - animation helpers
 - utility functions
 
 ---
 
-# **Version**
-
-Current Version:
+# Version
 
 ```txt
 v1.0.0
@@ -380,19 +463,19 @@ v1.0.0
 
 ---
 
-# **Contributing**
+# Contributing
 
-Contributions, ideas, bug reports, and feature requests are welcome.
+Contributions, bug reports, feature requests, and pull requests are welcome.
 
 ---
 
-# **License**
+# License
 
 MIT License
 
 ---
 
-# **About**
+# About
 
 Scriptelper is an open-source project focused on making JavaScript easier for beginners.
 
