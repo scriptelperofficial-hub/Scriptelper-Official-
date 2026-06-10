@@ -1,4 +1,4 @@
-![Scriptelper Banner](./assests/banner.png)
+![Scriptelper Banner](file_0000000020fc71f79df4bcf8c07aad57.png)
 
 # Scriptelper
 
